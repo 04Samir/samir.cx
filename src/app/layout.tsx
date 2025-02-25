@@ -24,9 +24,8 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         url: 'https://samir.cx',
-        title: 'Personal Portfolio Website',
-        description: 'Personal Portfolio Website',
-        siteName: 'samir.cx',
+        title: "Samir's Portfolio",
+        description: 'A Website to Showcase my Projects & Certifications',
         images: [],
     },
 };
@@ -37,6 +36,7 @@ export const viewport: Viewport = {
     minimumScale: 1,
     maximumScale: 1,
     userScalable: false,
+    themeColor: '#41E2FF',
 };
 
 export default function RootLayout({
