@@ -1,0 +1,59 @@
+{
+    "name": "samir.cx",
+    "version": "2.0.0",
+    "repository": "https://github.com/04Samir/samir.cx.git",
+    "author": "me@samir.cx",
+    "license": "MIT",
+    "private": true,
+    "packageManager": "yarn@1.22.22",
+    "scripts": {
+        "postinstall": "husky",
+        "format": "prettier --write .",
+        "lint": "eslint .",
+        "lint:fix": "yarn format && yarn lint --fix",
+        "dev": "next dev --turbopack",
+        "build": "next build",
+        "start": "next start"
+    },
+    "lint-staged": {
+        "*": [
+            "yarn format"
+        ],
+        "*.ts": [
+            "yarn lint:fix"
+        ]
+    },
+    "dependencies": {
+        "next": "^15.1.6",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3",
+        "@eslint/js": "^9.18.0",
+        "@next/eslint-plugin-next": "^15.1.5",
+        "@tailwindcss/postcss": "^4.0.0",
+        "@trivago/prettier-plugin-sort-imports": "^5.2.1",
+        "@tsparticles/engine": "^3.8.0",
+        "@tsparticles/react": "^3.0.0",
+        "@tsparticles/slim": "^3.8.0",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "eslint": "^9.18.0",
+        "eslint-config-next": "15.1.5",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-prettier": "^5.2.3",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.4.1",
+        "motion": "^12.0.5",
+        "postcss": "^8.5.1",
+        "prettier": "^3.4.2",
+        "prettier-plugin-tailwindcss": "^0.6.11",
+        "react-icons": "^5.4.0",
+        "tailwindcss": "^4.0.0",
+        "tsparticles": "^3.8.0",
+        "typescript": "^5.7.3",
+        "typescript-eslint": "^8.21.0"
+    }
+}

@@ -1,0 +1,80 @@
+@import 'tailwindcss';
+
+@theme {
+    --colour-blue-dark: oklch(0.65 0.1 220);
+    --colour-blue-light: oklch(0.85 0.15 220);
+    --colour-blue-lighter: oklch(0.9 0.05 240);
+    --colour-navy-dark: oklch(0.08 0.12 240);
+    --colour-navy-light: oklch(0.2 0.1 240);
+    --colour-white: oklch(0.99 0.02 0);
+    --font-body: 'Outfit', sans-serif;
+    --font-header: 'Rammetto One', serif;
+}
+
+@utility bg-blue-light {
+    background-color: var(--colour-blue-light);
+}
+
+@utility bg-navy-dark {
+    background-color: var(--colour-navy-dark);
+}
+
+@utility font-body {
+    font-family: var(--font-body);
+}
+
+@utility font-header {
+    font-family: var(--font-header);
+}
+
+@utility text-blue-dark {
+    color: var(--colour-blue-dark);
+}
+
+@utility text-blue-light {
+    color: var(--colour-blue-light);
+}
+
+@utility text-blue-lighter {
+    color: var(--colour-blue-lighter);
+}
+
+@utility text-navy-dark {
+    color: var(--colour-navy-dark);
+}
+
+@utility border-blue-light {
+    border-color: var(--colour-blue-light);
+}
+
+::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--colour-blue-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--colour-blue-light);
+    opacity: 0.8;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--colour-navy-dark);
+}
+
+* {
+    scrollbar-color: var(--colour-blue-light) var(--colour-navy-dark);
+    scrollbar-width: thin;
+}
+
+html,
+body {
+    background: linear-gradient(to bottom, var(--colour-navy-dark), var(--colour-navy-light));
+    background-color: var(--colour-navy-dark);
+    color: var(--colour-white);
+    font-family: var(--font-body);
+}
