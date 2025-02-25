@@ -26,14 +26,6 @@ export const metadata: Metadata = {
         url: 'https://samir.cx',
         title: "Samir's Portfolio",
         description: 'A Website to Showcase my Projects & Certifications',
-        images: [
-            {
-                url: 'https://samir.cx/logo.png',
-                width: 769,
-                height: 769,
-                alt: 'logo',
-            },
-        ],
     },
 };
 
