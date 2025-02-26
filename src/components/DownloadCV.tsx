@@ -3,9 +3,17 @@ import { FiDownload } from 'react-icons/fi';
 import { INFO } from '@/data/constants';
 
 export const DownloadCV = () => {
+    const getNearestFiveMinuteTimestamp = () => {
+        const now = new Date();
+        now.setMinutes(Math.floor(now.getMinutes() / 5) * 5, 0, 0);
+        return now.toISOString();
+    };
+
+    const cvUrl = `${INFO.cv}?t=${encodeURIComponent(getNearestFiveMinuteTimestamp())}`;
+
     return (
         <a
-            href={INFO.cv}
+            href={cvUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="group text-blue-light relative flex h-12 w-[176px] items-center justify-center overflow-hidden rounded-lg border-2 font-bold"
