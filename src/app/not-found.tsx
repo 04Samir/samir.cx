@@ -12,12 +12,13 @@ export default function NotFound() {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
+            const currentProtocol = window.location.protocol;
             const currentHost = window.location.hostname;
             const parts = currentHost.split('.');
 
             if (parts.length > 2) {
                 const rootDomain = parts.slice(-2).join('.');
-                setHomeLink(`https://${rootDomain}`);
+                setHomeLink(`${currentProtocol}//${rootDomain}`);
             }
         }
     }, []);

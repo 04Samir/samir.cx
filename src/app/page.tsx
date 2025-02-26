@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaCircleInfo, FaGithub, FaLink } from 'react-icons/fa6';
 import { PiMouseScroll } from 'react-icons/pi';
 import { TiTimes, TiTimesOutline } from 'react-icons/ti';
@@ -20,6 +20,22 @@ import {
 import * as constants from '@/data/constants';
 
 export default function Home() {
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const currentProtocol = window.location.protocol;
+            const currentHost = window.location.hostname;
+            const parts = currentHost.split('.');
+
+            if (parts.length > 2) {
+                const rootDomain = parts.slice(-2).join('.');
+
+                if (currentHost !== rootDomain) {
+                    window.location.href = `${currentProtocol}//${rootDomain}`;
+                }
+            }
+        }
+    }, []);
+
     const [activeTab, setActiveTab] = useState<'projects' | 'certifications'>('projects');
     const [selectedProject, setSelectedProject] = useState<null | (typeof constants.PROJECTS)[0]>(
         null,
