@@ -2,11 +2,26 @@
 
 import Link from 'next/link';
 
+import { useEffect, useState } from 'react';
 import { FaArrowLeft } from 'react-icons/fa6';
 
 import { motion } from 'motion/react';
 
 export default function NotFound() {
+    const [homeLink, setHomeLink] = useState('/');
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const currentHost = window.location.hostname;
+            const parts = currentHost.split('.');
+
+            if (parts.length > 2) {
+                const rootDomain = parts.slice(-2).join('.');
+                setHomeLink(`https://${rootDomain}`);
+            }
+        }
+    }, []);
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
             <motion.div
@@ -47,7 +62,7 @@ export default function NotFound() {
                 transition={{ delay: 1.7, duration: 0.3, ease: 'easeOut' }}
             >
                 <Link
-                    href="/"
+                    href={homeLink}
                     className="group border-blue-light text-blue-light relative mt-8 inline-flex h-12 w-[180px] items-center justify-center overflow-hidden rounded-lg border-2 font-bold"
                 >
                     <span className="bg-blue-light absolute inset-0 scale-0 rounded-lg transition-transform duration-300 group-hover:scale-110" />
