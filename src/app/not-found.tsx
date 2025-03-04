@@ -7,10 +7,14 @@ import { FaArrowLeft } from 'react-icons/fa6';
 
 import { motion } from 'motion/react';
 
+import * as constants from '@/data/constants';
+
 export default function NotFound() {
     const [homeLink, setHomeLink] = useState('/');
 
     useEffect(() => {
+        document.title = `404 | ${constants.INFO.name.first}'s Portfolio`;
+
         if (typeof window !== 'undefined') {
             const currentProtocol = window.location.protocol;
             const currentHost = window.location.hostname;

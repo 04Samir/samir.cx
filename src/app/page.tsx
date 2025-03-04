@@ -21,6 +21,8 @@ import * as constants from '@/data/constants';
 
 export default function Home() {
     useEffect(() => {
+        document.title = `${constants.INFO.name.first}'s Portfolio`;
+
         if (typeof window !== 'undefined') {
             const currentProtocol = window.location.protocol;
             const currentHost = window.location.hostname;
