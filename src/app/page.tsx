@@ -38,14 +38,6 @@ export default function Home() {
         }
     }, []);
 
-    const [activeTab, setActiveTab] = useState<'projects' | 'certifications'>('projects');
-    const [selectedProject, setSelectedProject] = useState<null | (typeof constants.PROJECTS)[0]>(
-        null,
-    );
-    const [imgOrigin, setImgOrigin] = useState('50% 50%');
-
-    const closeModal = () => setSelectedProject(null);
-
     const heroContainerVariants = {
         hidden: {},
         show: {
@@ -111,6 +103,13 @@ export default function Home() {
     const scrollToSection = (id: string) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    const [activeTab, setActiveTab] = useState<'projects' | 'certifications'>('projects');
+    const [selectedProject, setSelectedProject] = useState<null | (typeof constants.PROJECTS)[0]>(
+        null,
+    );
+    const [selectedProjectImg, setSelectedProjectImg] = useState('50% 50%');
+    const closeModal = () => setSelectedProject(null);
 
     return (
         <>
@@ -235,40 +234,49 @@ export default function Home() {
                                     exit="exitToRight"
                                     variants={tabVariants}
                                     transition={{ duration: 0.4 }}
-                                    className="flex w-full max-w-6xl flex-wrap justify-center gap-6 px-4"
+                                    className="grid w-full max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 md:grid-cols-3"
                                 >
-                                    {constants.PROJECTS.map((project, i) => (
-                                        <motion.div
-                                            key={project.title}
-                                            layoutId={`project-${i}`}
-                                            whileHover={{
-                                                scale: 1.04,
-                                                transition: { duration: 0.5, ease: 'easeOut' },
-                                            }}
-                                            className="group hover:border-blue-light relative w-full max-w-xs cursor-pointer overflow-hidden rounded-lg border-2 border-transparent shadow-md transition-colors duration-300 sm:w-1/2 md:w-1/3"
-                                            onClick={() => setSelectedProject(project)}
-                                        >
-                                            <div className="relative aspect-video transition-colors duration-500">
-                                                <Image
-                                                    src={project.image}
-                                                    alt={project.title}
-                                                    fill
-                                                    draggable={false}
-                                                    className="object-cover transition-transform duration-500 ease-out"
-                                                />
-                                                <div className="absolute inset-0 flex flex-col items-center justify-start bg-black/0 pt-14 transition-colors duration-500 group-hover:bg-black/50">
-                                                    <div className="text-blue-light flex items-center gap-2 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                                                        <FaCircleInfo className="h-6 w-6" />
+                                    {constants.PROJECTS.map((project, i) => {
+                                        const isLastSingleItem =
+                                            constants.PROJECTS.length % 3 === 1 &&
+                                            i === constants.PROJECTS.length - 1;
+                                        return (
+                                            <motion.div
+                                                key={`project-${i}`}
+                                                layoutId={`project-${i}`}
+                                                whileHover={{
+                                                    scale: 1.04,
+                                                    transition: { duration: 0.5, ease: 'easeOut' },
+                                                }}
+                                                className={`group hover:border-blue-light relative cursor-pointer overflow-hidden rounded-lg border-2 border-transparent shadow-md transition-colors duration-300 ${
+                                                    isLastSingleItem ? 'md:col-start-2' : ''
+                                                }`}
+                                                onClick={() => setSelectedProject(project)}
+                                            >
+                                                <div className="relative aspect-video transition-colors duration-500">
+                                                    <Image
+                                                        src={project.image}
+                                                        alt={project.title}
+                                                        fill
+                                                        draggable={false}
+                                                        className="object-cover transition-transform duration-500 ease-out"
+                                                        unoptimized
+                                                        priority
+                                                    />
+                                                    <div className="absolute inset-0 flex flex-col items-center justify-start bg-black/0 pt-14 transition-colors duration-500 group-hover:bg-black/50">
+                                                        <div className="text-blue-light flex items-center gap-2 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                                                            <FaCircleInfo className="h-6 w-6" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="bg-navy-dark absolute bottom-0 left-0 w-full translate-y-4 px-4 py-2 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                                                        <h3 className="text-blue-light text-xl font-bold">
+                                                            {project.title}
+                                                        </h3>
                                                     </div>
                                                 </div>
-                                                <div className="bg-navy-dark absolute bottom-0 left-0 w-full translate-y-4 px-4 py-2 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                                                    <h3 className="text-blue-light text-xl font-bold">
-                                                        {project.title}
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
+                                            </motion.div>
+                                        );
+                                    })}
                                 </motion.div>
                             ) : (
                                 <motion.div
@@ -282,7 +290,7 @@ export default function Home() {
                                 >
                                     {constants.CERTIFICATIONS.map((cert, i) => (
                                         <motion.a
-                                            key={cert.title + i}
+                                            key={`cert-${i}`}
                                             href={cert.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -302,6 +310,8 @@ export default function Home() {
                                                     fill
                                                     draggable={false}
                                                     className="object-cover"
+                                                    unoptimized
+                                                    priority
                                                 />
                                             </div>
                                             <div className="flex flex-1 flex-col p-4 text-left">
@@ -471,14 +481,18 @@ export default function Home() {
                                                         const y =
                                                             ((e.clientY - rect.top) / rect.height) *
                                                             100;
-                                                        setImgOrigin(`${x}% ${y}%`);
+                                                        setSelectedProjectImg(`${x}% ${y}%`);
                                                     }}
-                                                    onMouseLeave={() => setImgOrigin('50% 50%')}
+                                                    onMouseLeave={() =>
+                                                        setSelectedProjectImg('50% 50%')
+                                                    }
                                                 >
                                                     <motion.div
                                                         whileHover={{ scale: 1.05 }}
                                                         transition={{ duration: 0.3 }}
-                                                        style={{ transformOrigin: imgOrigin }}
+                                                        style={{
+                                                            transformOrigin: selectedProjectImg,
+                                                        }}
                                                         className="absolute inset-0"
                                                     >
                                                         <Image
@@ -487,6 +501,7 @@ export default function Home() {
                                                             fill
                                                             draggable={false}
                                                             className="rounded-lg object-cover"
+                                                            unoptimized
                                                         />
                                                     </motion.div>
                                                 </div>
