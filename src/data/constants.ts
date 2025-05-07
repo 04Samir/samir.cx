@@ -197,19 +197,11 @@ export const PROJECTS = [
 
 export const CERTIFICATIONS = [
     {
-        title: 'AWS: Solutions Architecture',
+        title: 'GitHub: Foundations',
         description:
-            'Completed the AWS Solutions Architecture Virtual Experience Program by Amazon Web Services.',
-        thumbnail: '/img/aws.jpeg',
-        link: '/certs/aws-solutions-architecture.pdf',
-        year: '2024',
-    },
-    {
-        title: 'JPMC: Software Engineering',
-        description:
-            'Completed the Software Engineering Virtual Experience Program by JPMorgan Chase & Co.',
-        thumbnail: '/img/jpmc.jpeg',
-        link: '/certs/jpmc-software-engineering.pdf',
-        year: '2024',
+            'Validated my skills in GitHub basics, including repositories, commits, branching, markdown and project management.',
+        thumbnail: '/img/github.png',
+        link: '/certs/github-foundations.pdf',
+        year: '2025',
     },
 ];
