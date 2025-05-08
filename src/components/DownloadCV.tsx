@@ -1,15 +1,21 @@
+import { useEffect, useState } from 'react';
 import { FiDownload } from 'react-icons/fi';
 
 import { INFO } from '@/data/constants';
 
 export const DownloadCV = () => {
+    const [cvUrl, setCvUrl] = useState('');
+
     const getNearestFiveMinuteTimestamp = () => {
         const now = new Date();
         now.setMinutes(Math.floor(now.getMinutes() / 5) * 5, 0, 0);
         return now.toISOString();
     };
 
-    const cvUrl = `${INFO.cv}?t=${encodeURIComponent(getNearestFiveMinuteTimestamp())}`;
+    useEffect(() => {
+        const timestamp = getNearestFiveMinuteTimestamp();
+        setCvUrl(`${INFO.cv}?t=${encodeURIComponent(timestamp)}`);
+    }, []);
 
     return (
         <a
