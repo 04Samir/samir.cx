@@ -49,8 +49,6 @@ export const INFO = {
     cv: 'https://cdn.samir.cx/CV.pdf',
 };
 
-export const SKILLS = [];
-
 export const PROJECTS = [
     {
         title: 'samir.cx (v2)',
