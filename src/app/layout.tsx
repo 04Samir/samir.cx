@@ -19,8 +19,6 @@ const rammettoOne = Rammetto_One({
 export const metadata: Metadata = {
     title: 'samir.cx',
     description: 'Personal Portfolio Website',
-    icons: [],
-    manifest: '',
     openGraph: {
         type: 'website',
         url: 'https://samir.cx',
@@ -48,6 +46,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="EN">
+            <head>
+                <meta name="apple-mobile-web-app-title" content="samir.cx" />
+            </head>
             <body className={`${rammettoOne.variable} ${outfit.variable}`}>{children}</body>
         </html>
     );
