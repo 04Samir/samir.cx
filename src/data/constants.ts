@@ -46,7 +46,7 @@ export const INFO = {
             icons: [RiLinkedinLine, RiLinkedinFill],
         },
     ],
-    cv: 'https://cdn.samir.cx/CV.pdf',
+    cv: 'https://cdn.samir.cx/docs/CV.pdf',
 };
 
 export const PROJECTS = [
@@ -195,11 +195,11 @@ export const PROJECTS = [
 
 export const CERTIFICATIONS = [
     {
-        title: 'GitHub: Foundations',
+        title: 'GitHub Foundations',
         description:
             'Validated my skills in GitHub basics, including repositories, commits, branching, markdown and project management.',
-        thumbnail: '/img/github.png',
-        link: '/certs/github-foundations.pdf',
+        thumbnail: '/img/GitHub.png',
+        link: 'https://cdn.samir.cx/certs/2025-GitHub-Foundations.pdf',
         year: '2025',
     },
 ];
