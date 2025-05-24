@@ -16,8 +16,11 @@ import {
     SiMysql,
     SiNextdotjs,
     SiNodedotjs,
+    SiNumpy,
     SiP5Dotjs,
+    SiPandas,
     SiPython,
+    SiPytorch,
     SiReact,
     SiTailwindcss,
     SiTypescript,
@@ -50,6 +53,26 @@ export const INFO = {
 };
 
 export const PROJECTS = [
+    {
+        title: 'F1 Race Forecasting',
+        description:
+            'A deep learning model using bi-directional LSTM with attention mechanism to predict Formula 1 race positions. Features 30+ engineered features, temporal weighting, and domain-specific adjustments for accurate race outcome forecasting.',
+        keyConcepts: [
+            'Deep Learning',
+            'Time Series Prediction',
+            'Feature Engineering',
+            'Data Science',
+        ],
+        techStack: [
+            { name: 'Python', icon: SiPython },
+            { name: 'PyTorch', icon: SiPytorch },
+            { name: 'Pandas', icon: SiPandas },
+            { name: 'NumPy', icon: SiNumpy },
+        ],
+        image: '/projects/F1-Race-Forecasting.png',
+        github: 'https://github.com/04Samir/F1-Race-Forecasting',
+        link: null,
+    },
     {
         title: 'samir.cx (v2)',
         description:
